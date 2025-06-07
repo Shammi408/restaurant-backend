@@ -13,7 +13,7 @@ const app = express();
 dotenv.config();
 const allowedOrigins = [
   'http://localhost:5173',
-  'https://restaurantnmongo.netlify.app'
+  'https://restaurantmongo.netlify.app'
 ];
 app.use(cors({ origin: allowedOrigins,credentials: true,}));
 app.use(express.json());  // Allow JSON body parsing
