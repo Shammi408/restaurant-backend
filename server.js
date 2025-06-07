@@ -18,13 +18,11 @@ const allowedOrigins = [
 // app.use(cors({ origin: allowedOrigins,credentials: true,}));
 app.use(cors({
   origin: function (origin, callback) {
-    console.log('Incoming CORS origin:', origin);
-    if (!origin) return callback(null, true); // allow non-browser requests like Postman
-    if (allowedOrigins.includes(origin)) {
+    if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      console.log('Blocked CORS origin:', origin);
-      callback(new Error('CORS not allowed for origin: ' + origin));
+      console.warn('Blocked by CORS:', origin);
+      callback(new Error('Not allowed by CORS'));
     }
   },
   credentials: true,
