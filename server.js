@@ -15,7 +15,20 @@ const allowedOrigins = [
   'http://localhost:5173',
   'https://restaurantmongo.netlify.app'
 ];
-app.use(cors({ origin: allowedOrigins,credentials: true,}));
+// app.use(cors({ origin: allowedOrigins,credentials: true,}));
+app.use(cors({
+  origin: function (origin, callback) {
+    console.log('Incoming CORS origin:', origin);
+    if (!origin) return callback(null, true); // allow non-browser requests like Postman
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      console.log('Blocked CORS origin:', origin);
+      callback(new Error('CORS not allowed for origin: ' + origin));
+    }
+  },
+  credentials: true,
+}));
 app.use(express.json());  // Allow JSON body parsing
 app.use('/api', menuRoutes); // menu route added
 app.use('/api/menu', menuRoutes); 
