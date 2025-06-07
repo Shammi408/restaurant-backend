@@ -11,8 +11,11 @@ const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 dotenv.config();
-
-app.use(cors({ origin: 'https://your-frontend.netlify.app',credentials: true,}));
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://restaurantnmongo.netlify.app'
+];
+app.use(cors({ origin: allowedOrigins,credentials: true,}));
 app.use(express.json());  // Allow JSON body parsing
 app.use('/api', menuRoutes); // menu route added
 app.use('/api/menu', menuRoutes); 
