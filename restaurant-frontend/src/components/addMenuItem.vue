@@ -79,7 +79,7 @@ export default {
       };
 
       try {
-        const res = await fetch('http://localhost:3000/api/menu', {
+        const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/menu`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

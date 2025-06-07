@@ -80,7 +80,7 @@ export default {
         const query = new URLSearchParams();
         if (this.startDate) query.append('startDate', this.startDate);
         if (this.endDate) query.append('endDate', this.endDate);
-        const url = `/api/analytics/export/orders/pdf?${query.toString()}`;
+        const url = `${import.meta.env.VITE_API_BASE_URL}/api/analytics/export/orders/pdf?${query.toString()}`;
         const response = await fetch(url, {
           method: 'GET',
           headers: {
@@ -104,7 +104,7 @@ export default {
   },
   async mounted() {
     try {
-      const res = await fetch('/api/analytics/dashboard',{
+      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/analytics/dashboard`,{
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }

@@ -45,7 +45,7 @@ export default {
       this.errorMessage = '';
       try {
         const token = localStorage.getItem('token'); // ensure token is stored on login
-        const response = await fetch('/api/admin/restaurant', {
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/admin/restaurant`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

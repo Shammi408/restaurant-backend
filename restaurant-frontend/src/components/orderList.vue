@@ -85,8 +85,8 @@ export default {
         const token = localStorage.getItem('token'); 
         // Append the status query param only if filterStatus is set
         const url = this.filterStatus
-          ? `http://localhost:3000/api/orders?status=${encodeURIComponent(this.filterStatus)}`
-          : 'http://localhost:3000/api/orders';
+          ? `${import.meta.env.VITE_API_BASE_URL}/api/orders?status=${encodeURIComponent(this.filterStatus)}`
+          : `${import.meta.env.VITE_API_BASE_URL}/api/orders`;
 
         const res = await fetch(url,{
           headers: {
@@ -109,7 +109,7 @@ export default {
       }
 
       try {
-        const res = await fetch(`http://localhost:3000/api/orders/${order._id}/status`, {
+        const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/orders/${order._id}/status`, {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ status: order.newStatus }),
@@ -132,7 +132,7 @@ export default {
       if (!confirmCancel) return;
 
       try {
-        const res = await fetch(`http://localhost:3000/api/orders/${order._id}`, {
+        const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/orders/${order._id}`, {
           method: 'DELETE',
         });
         const data = await res.json();
@@ -272,4 +272,4 @@ h2 {
   font-size: 0.95rem;
   color: #444;
 }
-</style>
+</style> 

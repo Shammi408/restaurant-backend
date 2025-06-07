@@ -121,7 +121,7 @@ export default {
       this.error = null;
 
       try {
-        const res = await fetch('http://localhost:3000/api/menu');
+        const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/menu`);
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         const data = await res.json();
         this.menuItems = data.data;
@@ -150,7 +150,7 @@ export default {
         params.append('limit', this.pageSize);
         params.append('showDeleted', this.showDeleted ? 'true' : 'false');
 
-        const url = `http://localhost:3000/api/menu?${params.toString()}`;
+        const url = `${import.meta.env.VITE_API_BASE_URL}/api/menu?${params.toString()}`;
 
         console.log('Fetch URL:', url);
 
@@ -174,7 +174,7 @@ export default {
     },
     async restoreItem(id) {
       try {
-        const res = await fetch(`http://localhost:3000/api/menu/${id}/soft-delete`, {
+        const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/menu/${id}/soft-delete`, {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ isActive: true })

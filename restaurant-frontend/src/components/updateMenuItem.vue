@@ -54,7 +54,7 @@ export default {
     async fetchItem() {
       try {
         const { id } = this.$route.params;
-        const response = await fetch(`/api/menu/${id}`);
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/menu/${id}`);
         if (!response.ok) throw new Error('Failed to load item');
         const data = await response.json();
         this.item = data.data || data;  // Adjust if your API wraps data
@@ -72,7 +72,7 @@ export default {
           tags: this.tagsString.split(',').map(tag => tag.trim())
         };
         delete updatedItem._id;
-        const response = await fetch(`/api/menu/${this.item._id}`,{
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/menu/${this.item._id}`,{
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(updatedItem),
@@ -96,7 +96,7 @@ export default {
       try {
         // If you don't have a toggleAvailability backend route, 
         // just update with PUT (or you can adjust as needed)
-        const response = await fetch(`/api/menu/${this.item._id}/availability`, {
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/menu/${this.item._id}/availability`, {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ available: !this.item.available }),
@@ -120,7 +120,7 @@ export default {
       if (!confirm('Are you sure you want to delete this item?')) return;
 
       try {
-        const res = await fetch(`/api/menu/${this.item._id}/soft-delete`, {
+        const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/menu/${this.item._id}/soft-delete`, {
           method: 'PATCH',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({ isActive: false })
