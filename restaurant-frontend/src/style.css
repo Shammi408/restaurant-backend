@@ -1,0 +1,231 @@
+/* ========== RESET & BASE ========== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #233749;
+  background-color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-synthesis: none;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem;
+  background-color: #ffffff;
+  color: #233749;
+}
+
+/* ========== TYPOGRAPHY ========== */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  margin-bottom: 0.5em;
+  color: #1a1a1a;
+}
+
+h1 {
+  font-size: 2.5rem;
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+p {
+  margin-bottom: 1em;
+  color: #444;
+}
+
+a {
+  color: #646cff;
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+a:hover,
+a:focus {
+  color: #535bf2;
+  outline: none;
+}
+
+/* ========== NAVIGATION ========== */
+.navbar {
+  background: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+}
+
+nav {
+  width: 100%;
+  max-width: 1280px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: inherit;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav a {
+  color: #333;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+nav a:hover {
+  color: #28a745; /* green hover */
+}
+
+/* ========== BUTTONS ========== */
+button {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.5em 1.25em;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-color: #1a1a1a;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+button:hover,
+button:focus {
+  background-color: #333;
+  border-color: #646cff;
+  outline: none;
+}
+
+button.logout {
+  background: none;
+  border: none;
+  color: #dc3545; /* bootstrap red */
+  cursor: pointer;
+  padding: 0;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+button.logout:hover,
+button.logout:focus {
+  text-decoration: underline;
+  color: #a71d2a;
+  outline: none;
+}
+
+/* ========== CARDS / CONTAINERS ========== */
+.card {
+  background-color: #f9f9f9;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 700px;
+}
+.container {
+  max-width: 960px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+/* ========== LAYOUT UTILITIES ========== */
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  justify-content: space-between;
+}
+
+.gap-1 {
+  gap: 1rem;
+}
+
+.gap-2 {
+  gap: 2rem;
+}
+
+.mt-1 {
+  margin-top: 1rem;
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+/* ========== MISC ========== */
+.error {
+  color: #dc3545;
+  font-weight: 600;
+  margin: 1rem 0;
+}
+
+.loading {
+  font-style: italic;
+  color: #777;
+}
+
+#app {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  text-align: center;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  nav {
+    padding: 1rem;
+    border-radius: 0;
+  }
+  .card {
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+}
